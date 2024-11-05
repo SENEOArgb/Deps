@@ -33,7 +33,12 @@ jobs:
         run: dotnet tool install --global dotnet-outdated-tool
 
       - name: Message about outdated dep's
-        run: echo "Please, up to date next packets:"
-             dotnet outdated
-             echo "Packets will be updated!"
-             dotnet outdated -u
+        run: |
+          echo "Please, up to date next packets:"
+          dotnet outdated
+
+        
+      - name: Update to packets
+        run: |
+          echo "Packets will be updated!"
+          dotnet outdated -u
