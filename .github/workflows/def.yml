@@ -20,6 +20,12 @@ jobs:
       - name: Restore dependecies
         run: dotnet restore ./Deps.csproj
 
+      - name: Message about outdated dep's
+        run: echo "Please, up to date next packets:"
+             dotnet outdated
+             echo "Packets will be updated!"
+             dotnet outdated -u
+        
       - name: Build project
         run: dotnet build ./Deps.csproj
 
@@ -29,3 +35,5 @@ jobs:
       - name: Message about outdated dep's
         run: echo "Please, up to date next packets:"
              dotnet outdated
+             echo "Packets will be updated!"
+             dotnet outdated -u
