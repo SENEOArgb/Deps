@@ -17,11 +17,11 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Build project
-        run: dotnet build Deps/Deps.csproj
-
       - name: Restore dependecies
-        run: dotnet restore Deps/Deps.csproj
+        run: dotnet restore ./Deps.csproj
+
+      - name: Build project
+        run: dotnet build ./Deps.csproj
 
       - name: Install outdated
         run: dotnet tool install --global dotnet-outdated-tool
