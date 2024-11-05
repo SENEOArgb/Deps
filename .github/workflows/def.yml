@@ -1,0 +1,31 @@
+name: Defend Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  chec-dependencies-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+    
+      - name: Restore dependecies
+        run: dotnet restore Deps/Deps.csproj
+
+      - name: Install outdated
+        run: dotnet tool install --global dotnet-outdated-tool
+
+      - name: Message about outdated dep's
+        run: echo "Please, up to date next packets:"
+             dotnet outdated
+
+      - name: Build project
+        run: dotnet build Deps/Deps.csproj
