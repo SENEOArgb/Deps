@@ -20,12 +20,12 @@ jobs:
       - name: Restore dependecies
         run: dotnet restore Deps/Deps.csproj
 
+      - name: Build project
+        run: dotnet build Deps/Deps.csproj
+
       - name: Install outdated
         run: dotnet tool install --global dotnet-outdated-tool
 
       - name: Message about outdated dep's
         run: echo "Please, up to date next packets:"
              dotnet outdated
-
-      - name: Build project
-        run: dotnet build Deps/Deps.csproj
