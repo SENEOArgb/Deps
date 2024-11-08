@@ -42,3 +42,8 @@ jobs:
         run: |
           echo "Packets will be updated!"
           dotnet outdated -u
+      
+      - name: Check version of packets
+        run: |
+          echo "Actual versions of packets:"
+          dotnet outdated
